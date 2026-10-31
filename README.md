@@ -5,7 +5,6 @@ Bu proje, **Türkçe öğretmenlerimizin** ve okul idarecilerimizin üzerindeki 
 Tüm menü, kategori ve içerik yapısı **[Turkcen.Net Tutanak Oluşturma Araçları](https://www.turkcen.net/tutanak-olusturma-araclari/)** referans alınarak ve Türkçe öğretmenlerinin özel ihtiyaçları gözetilerek hazırlanmıştır.
 
 ---
-
 ## 🚀 Öne Çıkan Özellikler
 
 1. **🌐 Çevrimiçi Modül Güncelleme (Online Sync):**
