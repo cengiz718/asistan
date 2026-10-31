@@ -5,6 +5,7 @@ Bu proje, **Türkçe öğretmenlerimizin** ve okul idarecilerimizin üzerindeki 
 Tüm menü, kategori ve içerik yapısı **[Turkcen.Net Tutanak Oluşturma Araçları](https://www.turkcen.net/tutanak-olusturma-araclari/)** referans alınarak ve Türkçe öğretmenlerinin özel ihtiyaçları gözetilerek hazırlanmıştır.
 
 ---
+
 ## 🚀 Öne Çıkan Özellikler
 
 1. **🌐 Çevrimiçi Modül Güncelleme (Online Sync):**
@@ -60,5 +61,50 @@ Tüm menü, kategori ve içerik yapısı **[Turkcen.Net Tutanak Oluşturma Araç
 - **Dinleme / İzleme Metni ve Etkinlik Sihirbazı:** Öğretmenin sınıfta okuyacağı özgün dinleme metni ve 5N1K / anlama soruları.
 - **Deyimler ve Atasözleri Çalışma Formu:** Söz varlığını geliştirmeye yönelik anlam eşleştirme ve hikayeli etkinlik formları.
 
+---
 
+## 📱 APK Oluşturma ve Telefona Kurma Yöntemleri
+
+Bu projeyi Android telefonunuza kurmak için **3 çok pratik yöntem** hazırlanmıştır:
+
+### YÖNTEM 1: Tek Tıkla Telefona Kurulum (En Hızlısı - Sıfır Kodlama)
+1. Bu projedeki `index.html` dosyasını ücretsiz bir web alanına (örneğin GitHub Pages, Netlify veya Vercel'e) yükleyin.
+2. Android telefonunuzun Chrome tarayıcısından sitenizi açın.
+3. Sağ üstteki 3 noktaya tıklayıp **"Uygulamayı Yükle"** veya **"Ana Ekrana Ekle"** deyin.
+4. Telefonunuz bunu tıpkı Play Store'dan yüklenmiş bir APK gibi bağımsız bir uygulama olarak kuracaktır.
+
+---
+
+### YÖNTEM 2: PWABuilder ile 30 Saniyede İmzalı APK İndirme (Tavsiye Edilen)
+1. Web sitenizin bağlantısını [PWABuilder.com](https://www.pwabuilder.com) adresine yapıştırın ve **Start** butonuna basın.
+2. **Package for Android** seçeneğine tıklayın.
+3. PWABuilder saniyeler içinde telefonunuza kurabileceğiniz imzalı `.apk` dosyasını üretecektir.
+
+---
+
+### YÖNTEM 3: GitHub Actions ile Ücretsiz Otomatik APK Derlemesi
+Proje içerisinde hazır bir `.github/workflows/build-apk.yml` dosyası bulunmaktadır:
+1. Bu klasörü kendi GitHub hesabınızda yeni bir repoya yükleyin (Push yapın).
+2. GitHub'daki **Actions** sekmesine gidin.
+3. Sistem yaklaşık 2 dakika içinde projeyi derleyecek ve **Artifacts** kısmında doğrudan indirilebilir **`Turkce-Tutanak-Asistani-APK`** dosyasını sunacaktır.
+
+---
+
+### YÖNTEM 4: Android Studio ile Yerel Derleme
+1. Bilgisayarınızda Android Studio programını açın.
+2. `android/` klasörünü proje olarak seçip açın.
+3. `index.html`, `manifest.json`, `sw.js` ve `modules.json` dosyalarını `android/app/src/main/assets/www/` dizinine kopyalayın.
+4. Üst menüden **Build > Build Bundle(s) / APK(s) > Build APK(s)** seçeneğine tıklayın.
+5. Oluşan `app-debug.apk` dosyasını telefonunuza yükleyin.
+
+---
+
+## 🌐 Çevrimiçi Modülleri Nasıl Güncellersiniz?
+
+Uygulamanın kalbi `modules.json` dosyasıdır.
+1. `modules.json` dosyasını bir GitHub reposuna (Raw link) veya kendi web sunucunuza yükleyin.
+2. Uygulama içerisindeki **Ayarlar (Dişli çark) > Çevrimiçi Modül Kaynak URL'si** alanına bu dosyanın doğrudan bağlantısını yapıştırın.
+3. Artık siz bu dosyaya yeni bir tutanak türü veya yeni sorular eklediğinizde, uygulamayı kullanan tüm öğretmenler "Modül Güncelle" butonuna bastığında yeni tutanaklar anında ekranlarına gelecektir!
+
+---
 *MEB mevzuatına uygun olarak hazırlanmıştır. Resmî yazışma kuralları ve Türkiye Yüzyılı Maarif Modeli ile uyumludur.*

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Türkçe Asistanı: 5-8. Sınıf Ders & Tutanak Portalı</title>
+  <meta name="description" content="Türkçe öğretmenleri için 5, 6, 7 ve 8. sınıf konu anlatımları, MEB açık uçlu yazılıları, LGS denemeleri ve resmî tutanak asistanı.">
+  <meta name="theme-color" content="#1e40af">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    @media print {
+      body * { visibility: hidden; }
+      #printArea, #printArea * { visibility: visible; }
+      #printArea { position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 20mm; background: white; color: black; font-family: "Times New Roman", Times, serif; }
+      .no-print { display: none !important; }
+    }
+    .scrollbar-thin::-webkit-scrollbar { height: 4px; width: 4px; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-200">
+  <header class="sticky top-0 z-40 bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 text-white shadow-md">
+    <div class="max-w-5xl mx-auto px-4 py-2.5 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-xl shadow-inner text-amber-300">
+          <i class="bi bi-book-half"></i>
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold tracking-tight leading-tight flex items-center gap-1.5">
+            Türkçe Asistanı
+            <span class="text-[10px] bg-amber-400 text-blue-950 px-1.5 py-0.5 rounded-full font-black tracking-wider uppercase">v2.0 PRO</span>
+          </h1>
+          <p class="text-[11px] text-blue-200">5-8. Sınıf Dersleri & MEB Tutanakları</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button id="btnOnlineSync" title="Buluttan Canlı Güncelle" class="relative p-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-xs flex items-center gap-1.5 transition">
+          <i id="syncIcon" class="bi bi-arrow-repeat text-amber-300 text-sm"></i>
+          <span class="hidden sm:inline font-semibold">Web'den Güncelle</span>
+          <span id="updateDot" class="hidden absolute top-1 right-1 w-2 h-2 bg-emerald-400 rounded-full animate-ping"></span>
+        </button>
+        <button id="btnSettings" title="Okul & Öğretmen Ayarları" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 transition text-sm">
+          <i class="bi bi-gear-fill"></i>
+        </button>
+      </div>
+    </div>
+    <div class="bg-blue-950/90 border-t border-white/10 px-4 py-1.5 text-[11px] text-blue-100 flex items-center justify-between max-w-5xl mx-auto">
+      <div class="truncate flex items-center gap-1.5">
+        <i class="bi bi-person-badge-fill text-amber-400"></i>
+        <span id="ribbonTeacher">Türkçe Öğretmeni</span> &bull; 
+        <span id="ribbonSchool">Atatürk Ortaokulu</span>
+      </div>
+      <button onclick="openSettingsModal()" class="text-amber-300 hover:underline shrink-0 text-[10px] font-medium">Bilgileri Düzenle</button>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-5xl w-full mx-auto p-3 sm:p-4 space-y-4">
+    <section class="bg-white rounded-2xl p-3.5 sm:p-4 shadow-sm border border-slate-200 space-y-3">
+      <div class="relative">
+        <i class="bi bi-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+        <input type="text" id="searchInput" placeholder="Konu, sınıf veya tutanak ara... (örn: Fiilimsiler, LGS, 6. Sınıf, Yazılı, Veli, Zümre)" 
+               class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-xs sm:text-sm">
+      </div>
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin text-xs font-medium">
+        <button class="cat-pill active px-3.5 py-2 rounded-xl bg-blue-700 text-white shrink-0 shadow-sm flex items-center gap-1" data-cat="all">
+          <i class="bi bi-grid-fill"></i> Tümü (<span id="totalToolsCount">0</span>)
+        </button>
+        <button class="cat-pill px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0 font-bold" data-cat="sinif_5">
+          <span class="w-2 h-2 rounded-full bg-cyan-500 inline-block mr-1"></span> 5. Sınıf
+        </button>
+        <button class="cat-pill px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0 font-bold" data-cat="sinif_6">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block mr-1"></span> 6. Sınıf
+        </button>
+        <button class="cat-pill px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0 font-bold" data-cat="sinif_7">
+          <span class="w-2 h-2 rounded-full bg-amber-500 inline-block mr-1"></span> 7. Sınıf
+        </button>
+        <button class="cat-pill px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0 font-bold text-red-700 bg-red-50" data-cat="sinif_8">
+          <i class="bi bi-award-fill text-rose-600 mr-1"></i> 8. Sınıf & LGS
+        </button>
+        <button class="cat-pill px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0" data-cat="temel_kurul">
+          <i class="bi bi-people-fill text-blue-600 mr-1"></i> Tutanaklar
+        </button>
+        <button class="cat-pill px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0" data-cat="rehberlik_disiplin">
+          <i class="bi bi-shield-check text-purple-600 mr-1"></i> BEP & Rehberlik
+        </button>
+        <button class="cat-pill px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0 text-emerald-800 bg-emerald-50" data-cat="live_feed">
+          <i class="bi bi-broadcast text-emerald-600 mr-1 animate-pulse"></i> Canlı MEB Akışı
+        </button>
+      </div>
+      <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between text-[11px] text-slate-500 gap-2">
+        <div class="flex items-center gap-1.5">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>Dahili Veritabanı: <strong id="moduleVersionBadge" class="text-slate-800 font-bold">v2.0.0</strong></span>
+          <span class="text-slate-300">|</span>
+          <span id="moduleUpdateDate" class="text-slate-600">31 Ekim 2026</span>
+        </div>
+        <div class="flex items-center gap-2 text-blue-700 font-medium">
+          <i class="bi bi-check-all text-base text-emerald-600"></i>
+          <span>mesuthayat.com & turkcen.net ile Senkronize</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live MEB Feed Announcement Banner -->
+    <section id="liveFeedBanner" class="bg-gradient-to-r from-emerald-900 to-teal-900 text-white rounded-2xl p-4 shadow-sm border border-emerald-700/50 space-y-2">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-300 text-xs">
+            <i class="bi bi-rss-fill"></i>
+          </span>
+          <h3 class="font-bold text-xs sm:text-sm">Otomatik Canlı MEB & Türkçe Dersi Akışı</h3>
+        </div>
+        <span class="text-[10px] bg-emerald-500/30 text-emerald-200 px-2 py-0.5 rounded-full font-mono">Otomatik Güncellenir</span>
+      </div>
+      <div id="liveFeedContent" class="text-xs text-emerald-100 space-y-1.5 pt-1">
+        <div class="p-2.5 rounded-xl bg-black/20 border border-white/5 flex items-start justify-between gap-2">
+          <div>
+            <strong class="text-white block font-semibold">📌 2026-2027 MEB Açık Uçlu Sınav Senaryoları & Ortak Sınav Kılavuzu</strong>
+            <span class="text-[11px] text-emerald-200">5, 6, 7 ve 8. sınıf ortak sınav kazanım dağılım tabloları ve puanlama rubrikleri güncellendi.</span>
+          </div>
+          <span class="text-[10px] text-emerald-300 shrink-0 font-mono">Bugün</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-black/20 border border-white/5 flex items-start justify-between gap-2">
+          <div>
+            <strong class="text-white block font-semibold">📘 Türkiye Yüzyılı Maarif Modeli 5. ve 9. Sınıf Türkçe/Edebiyat Fasikülleri</strong>
+            <span class="text-[11px] text-emerald-200">Beceri temelli dinleme-konuşma ve anlama ölçekleri sisteme eklendi.</span>
+          </div>
+          <span class="text-[10px] text-emerald-300 shrink-0 font-mono">Dün</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories and Tools Grid -->
+    <div id="toolsContainer" class="space-y-6"></div>
+  </main>
+
+  <!-- Modal -->
+  <div id="generatorModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+    <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl border border-slate-200 flex flex-col max-h-[92vh] overflow-hidden">
+      <div class="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white px-5 py-3.5 flex items-center justify-between shrink-0">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-amber-300 text-sm">
+            <i class="bi bi-file-earmark-text-fill"></i>
+          </div>
+          <div>
+            <h3 id="modalToolTitle" class="font-bold text-sm sm:text-base leading-tight">Tutanak & Ders Sihirbazı</h3>
+            <p id="modalToolSubtitle" class="text-[11px] text-blue-200">Bilgileri doldurun, Yapay Zekâ resmî evrakı veya ders materyalini hazırlasın</p>
+          </div>
+        </div>
+        <button onclick="closeGeneratorModal()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
+          <i class="bi bi-x-lg text-xs"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4">
+        <div id="modalFormStep" class="space-y-3.5">
+          <div id="toolSummaryBox" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-3.5 text-xs text-amber-950 space-y-1.5">
+            <div class="font-bold text-amber-800 flex items-center gap-1.5">
+              <i class="bi bi-journal-text text-amber-600"></i> Hızlı Ders Konu Özeti & Bilgi Notu:
+            </div>
+            <pre id="toolSummaryText" class="whitespace-pre-wrap font-sans text-xs leading-relaxed text-amber-900"></pre>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-2.5 text-xs text-blue-900 flex items-center justify-between">
+            <div class="flex items-center gap-2 truncate">
+              <i class="bi bi-geo-alt-fill text-blue-600"></i>
+              <span>Kurum: <strong id="formPreviewSchool">Okul Adı</strong></span>
+            </div>
+            <button onclick="openSettingsModal()" class="text-blue-700 underline font-medium shrink-0 text-[11px]">Değiştir</button>
+          </div>
+
+          <form id="activeToolForm" class="space-y-3">
+            <div id="dynamicFormFields" class="space-y-3"></div>
+            <div class="pt-2 border-t border-slate-200">
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                <i class="bi bi-stars text-amber-500"></i> Üretim & Yapay Zekâ Motoru
+              </label>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <label class="flex items-center gap-2 p-2.5 rounded-xl border border-blue-200 bg-blue-50/50 cursor-pointer hover:bg-blue-50">
+                  <input type="radio" name="aiMode" value="fast" checked class="text-blue-600">
+                  <div>
+                    <div class="font-bold text-slate-800">MEB Akıllı Şablon Motoru</div>
+                    <div class="text-[10px] text-slate-500">Sıfır Kota, Anında, Çevrimdışı</div>
+                  </div>
+                </label>
+                <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 bg-white cursor-pointer hover:bg-slate-50">
+                  <input type="radio" name="aiMode" value="gemini" class="text-blue-600">
+                  <div>
+                    <div class="font-bold text-slate-800">Gemini 1.5 Canlı Yapay Zekâ</div>
+                    <div class="text-[10px] text-slate-500">Gelişmiş AI & Serbest Soru/Metin</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div id="modalPreviewStep" class="hidden space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+              <i class="bi bi-pencil-square text-blue-600"></i> Oluşturulan Belge Metni (Düzenlenebilir)
+            </span>
+            <span class="text-[11px] text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-lg font-bold border border-emerald-200 flex items-center gap-1">
+              <i class="bi bi-check-circle-fill"></i> Hazırlandı
+            </span>
+          </div>
+          <textarea id="generatedDocText" rows="15" class="w-full p-4 border border-slate-300 rounded-xl bg-slate-50 font-serif text-xs sm:text-sm leading-relaxed text-slate-800 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-inner"></textarea>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 border-t border-slate-200 px-4 sm:px-5 py-3 flex flex-wrap items-center justify-between gap-2 shrink-0">
+        <div id="footerFormButtons" class="w-full flex items-center justify-between">
+          <button type="button" onclick="closeGeneratorModal()" class="px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-200 rounded-xl transition">Vazgeç</button>
+          <button type="button" id="btnGenerateDocument" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-800 hover:to-indigo-800 text-white font-semibold text-xs flex items-center gap-2 shadow-md hover:shadow-lg transition">
+            <i class="bi bi-stars text-amber-300"></i>
+            <span>Belgeyi / Materyali Oluştur</span>
+          </button>
+        </div>
+        <div id="footerPreviewButtons" class="hidden w-full flex flex-wrap items-center justify-between gap-2">
+          <button type="button" onclick="backToFormStep()" class="px-3.5 py-2 text-xs font-medium text-slate-600 hover:bg-slate-200 rounded-xl transition flex items-center gap-1">
+            <i class="bi bi-arrow-left"></i> Geri Dön
+          </button>
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="copyDocumentToClipboard()" class="px-3 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-xl text-xs font-medium flex items-center gap-1 transition">
+              <i class="bi bi-clipboard"></i> Kopyala
+            </button>
+            <button type="button" onclick="printDocument()" class="px-3 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-medium flex items-center gap-1 transition">
+              <i class="bi bi-printer-fill"></i> Yazdır / PDF
+            </button>
+            <button type="button" onclick="downloadWordDocument()" class="px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition">
+              <i class="bi bi-file-earmark-word-fill text-amber-300"></i> Word (.doc) İndir
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="settingsModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-5">
+    <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="bg-slate-900 text-white px-5 py-3.5 flex items-center justify-between">
+        <h3 class="font-bold text-sm sm:text-base flex items-center gap-2">
+          <i class="bi bi-sliders text-amber-400"></i> Ayarlar & Okul Profiliniz
+        </h3>
+        <button onclick="closeSettingsModal()" class="text-slate-400 hover:text-white">
+          <i class="bi bi-x-lg text-sm"></i>
+        </button>
+      </div>
+      <div class="p-5 space-y-3.5 max-h-[75vh] overflow-y-auto text-xs">
+        <div class="bg-amber-50 border border-amber-200 text-amber-900 p-3 rounded-xl leading-relaxed">
+          <i class="bi bi-lightbulb-fill text-amber-600 mr-1"></i>
+          Girdiğiniz okul ve öğretmen bilgileri yerel hafızada saklanır. Tüm tutanaklarda ve yazılı sınav antetlerinde otomatik doldurulur.
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">İl</label>
+            <input type="text" id="setIl" class="w-full p-2 border border-slate-300 rounded-lg" placeholder="Örn: ANKARA">
+          </div>
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">İlçe</label>
+            <input type="text" id="setIlce" class="w-full p-2 border border-slate-300 rounded-lg" placeholder="Örn: ÇANKAYA">
+          </div>
+        </div>
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">Okul / Kurum Tam Adı</label>
+          <input type="text" id="setOkulAdi" class="w-full p-2 border border-slate-300 rounded-lg" placeholder="Örn: Atatürk Ortaokulu">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">Öğretmen Adı Soyadı</label>
+            <input type="text" id="setOgretmenAdi" class="w-full p-2 border border-slate-300 rounded-lg" placeholder="Örn: Ali Emir YILMAZ">
+          </div>
+          <div>
+            <label class="block font-medium text-slate-700 mb-1">Branş</label>
+            <input type="text" id="setBrans" class="w-full p-2 border border-slate-300 rounded-lg" value="Türkçe Öğretmeni">
+          </div>
+        </div>
+        <div>
+          <label class="block font-medium text-slate-700 mb-1">Okul Müdürü Adı Soyadı</label>
+          <input type="text" id="setMudurAdi" class="w-full p-2 border border-slate-300 rounded-lg" placeholder="Örn: Mustafa KILIÇ (Okul Müdürü)">
+        </div>
+        <div class="pt-2 border-t border-slate-200">
+          <label class="block font-bold text-slate-800 mb-1 flex items-center justify-between">
+            <span>Google Gemini API Anahtarı (İsteğe Bağlı)</span>
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 underline font-normal text-[10px]">Ücretsiz Al &nearr;</a>
+          </label>
+          <input type="password" id="setGeminiKey" class="w-full p-2 border border-slate-300 rounded-lg font-mono text-[11px]" placeholder="AIzaSy...">
+          <p class="text-[10px] text-slate-500 mt-1">Girmeseniz bile sistem dahili MEB kural motoruyla eksiksiz tutanaklar ve sınavlar üretmeye devam eder.</p>
+        </div>
+        <div class="pt-2 border-t border-slate-200">
+          <label class="block font-medium text-slate-700 mb-1">Çevrimiçi Modül Kaynak URL'si</label>
+          <input type="text" id="setRemoteUrl" class="w-full p-2 border border-slate-300 rounded-lg font-mono text-[11px]" value="modules.json">
+        </div>
+      </div>
+      <div class="bg-slate-50 px-5 py-3 border-t border-slate-200 flex justify-end gap-2">
+        <button onclick="closeSettingsModal()" class="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-200 font-medium text-xs">Kapat</button>
+        <button onclick="saveSettings()" class="px-5 py-2 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs shadow-sm">Kaydet & Güncelle</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="printArea" class="hidden"></div>
+  <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-2 text-xs transition transform translate-y-20 opacity-0 duration-200">
+    <i id="toastIcon" class="bi bi-check-circle-fill text-emerald-400"></i>
+    <span id="toastMsg">İşlem tamamlandı.</span>
+  </div>
+
+  <script src="modules.json" type="application/json" id="modulesDataJson"></script>
+  <script>
+    // Load root index.html logic
+    // Redirect or sync from window.location
+  </script>
+</body>
+</html>

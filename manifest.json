@@ -1,0 +1,20 @@
+{
+  "id": "/index.html",
+  "name": "Türkçe Öğretmeni - Tutanak Asistanı",
+  "short_name": "MEB Tutanak",
+  "description": "Türkçe öğretmenleri için tutanak, sınav ve etkinlik belgesi hazırlama asistanı",
+  "lang": "tr",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f172a",
+  "theme_color": "#1e40af",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
