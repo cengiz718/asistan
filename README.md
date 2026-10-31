@@ -62,12 +62,4 @@ Tüm menü, kategori ve içerik yapısı **[Turkcen.Net Tutanak Oluşturma Araç
 - **Deyimler ve Atasözleri Çalışma Formu:** Söz varlığını geliştirmeye yönelik anlam eşleştirme ve hikayeli etkinlik formları.
 
 
-## 🌐 Çevrimiçi Modülleri Nasıl Güncellersiniz?
-
-Uygulamanın kalbi `modules.json` dosyasıdır.
-1. `modules.json` dosyasını bir GitHub reposuna (Raw link) veya kendi web sunucunuza yükleyin.
-2. Uygulama içerisindeki **Ayarlar (Dişli çark) > Çevrimiçi Modül Kaynak URL'si** alanına bu dosyanın doğrudan bağlantısını yapıştırın.
-3. Artık siz bu dosyaya yeni bir tutanak türü veya yeni sorular eklediğinizde, uygulamayı kullanan tüm öğretmenler "Modül Güncelle" butonuna bastığında yeni tutanaklar anında ekranlarına gelecektir!
-
----
 *MEB mevzuatına uygun olarak hazırlanmıştır. Resmî yazışma kuralları ve Türkiye Yüzyılı Maarif Modeli ile uyumludur.*
