@@ -1,0 +1,291 @@
+{
+  "version": "2.0.0",
+  "lastUpdated": "2026-10-31",
+  "appTitle": "Türkçe Asistanı: 5-8. Sınıf Ders & Tutanak Portalı",
+  "categories": [
+    {
+      "id": "sinif_5",
+      "name": "5. Sınıf Türkçe (mesuthayat.com)",
+      "icon": "bi-5-square-fill",
+      "color": "from-blue-600 to-cyan-600",
+      "tools": [
+        {
+          "id": "5_konu_anlatimlari",
+          "title": "5. Sınıf Konu Anlatımları & Ders Notları",
+          "description": "Sözcükte Anlam, Kök-Ek, Cümlede Anlam, Paragraf, Noktalama ve Yazım Kuralları özetleri.",
+          "badge": "5. Sınıf",
+          "content_summary": "• Sözcükte Anlam: Gerçek anlam, mecaz anlam, terim anlam, eş anlam, zıt anlam, eş sesli kelimeler.\n• Ek ve Kök Bilgisi: İsim kökleri, fiil kökleri, yapım ekleri (-lik, -ci, -li, -siz) ve çekim ekleri (çoğul, hâl ekleri).\n• Cümlede Anlam: Neden-sonuç, amaç-sonuç, öznel ve nesnel yargılar.\n• Paragraf: Ana fikir, başlık belirleme, hikâye unsurları (olay, yer, zaman, şahıs kadrosu).\n• Yazım & Noktalama: Büyük harflerin yazımı, sayıların yazımı, nokta, virgül, soru işareti.",
+          "fields": [
+            { "id": "konu", "label": "İncelenecek / Üretilecek Konu", "type": "select", "options": ["Sözcükte Anlam (Gerçek/Mecaz/Terim)", "Kökler ve Ekler (Yapım & Çekim Ekleri)", "Cümlede Anlam (Neden-Sonuç, Amaç-Sonuç)", "Paragrafta Ana Fikir & Hikâye Unsurları", "Noktalama İşaretleri ve Yazım Kuralları"] },
+            { "id": "format", "label": "İstenen İçerik", "type": "select", "options": ["Öğrenci Ders Özeti & Konu Anlatımı", "Örnek Cümleler ve Çözümlü Alıştırmalar", "Sınıf İçi Akıllı Tahta Notu"] }
+          ],
+          "ai_prompt": "Sen 5. sınıf öğrencilerine Türkçe öğreten pedagojik bir öğretmensin. Seçilen 5. sınıf Türkçe konusu için sade, anlaşılır, renkli örneklerle desteklenmiş, Türkiye Yüzyılı Maarif Modeli kazanımlarına tam uyumlu bir konu anlatım fasikülü hazırla."
+        },
+        {
+          "id": "5_yazili_sinav",
+          "title": "5. Sınıf Açık Uçlu Yazılı Sınavı & Rubrik",
+          "description": "MEB senaryolarına uygun okuma parçalı açık uçlu yazılı sınavı ve puanlı cevap anahtarı.",
+          "badge": "Açık Uçlu",
+          "fields": [
+            { "id": "donem_sinav", "label": "Sınav Dönemi", "type": "select", "options": ["1. Dönem 1. Yazılı", "1. Dönem 2. Yazılı (Ortak)", "2. Dönem 1. Yazılı", "2. Dönem 2. Yazılı"] },
+            { "id": "senaryo", "label": "MEB Ölçme Senaryosu", "type": "select", "options": ["MEB Senaryo 1 (Kazanım Dengeli)", "MEB Senaryo 2 (Metin Anlama Ağırlıklı)"] },
+            { "id": "soru_sayisi", "label": "Soru Adedi", "type": "select", "options": ["6 Açık Uçlu Soru", "8 Açık Uçlu Soru"] }
+          ],
+          "ai_prompt": "5. sınıf Türkçe dersi için MEB senaryolarına tam uyumlu açık uçlu sınav hazırla. Girişte 150 kelimelik bir çocuk hikayesi veya masal metni, ardından metne dayalı 5N1K ve dil bilgisi açık uçlu soruları ile en altta puanlama anahtarını ekle."
+        },
+        {
+          "id": "5_calisma_kagidi",
+          "title": "5. Sınıf Çalışma Kâğıdı & Etkinlik",
+          "description": "Kök-ek bulma, eş/zıt anlam eşleştirme ve doğru-yanlış alıştırmaları.",
+          "badge": "Etkinlik",
+          "fields": [
+            { "id": "konu", "label": "Etkinlik Konusu", "type": "select", "options": ["Yapım ve Çekim Ekleri Bulmacası", "Eş ve Zıt Anlamlı Sözcükler Tablosu", "Noktalama İşaretlerini Yerleştirme", "Neden-Sonuç ve Amaç-Sonuç Cümleleri"] }
+          ],
+          "ai_prompt": "5. sınıf öğrencileri için eğlenceli, boşluk doldurmalı ve eşleştirmeli Türkçe çalışma yaprağı hazırla."
+        },
+        {
+          "id": "5_dinleme_metni",
+          "title": "5. Sınıf Dinleme / İzleme Metni & Soruları",
+          "description": "Öğretmenin okuyacağı özgün dinleme metni ve öğrenci dinleme etkinlikleri.",
+          "badge": "Dinleme",
+          "fields": [
+            { "id": "tema", "label": "Dinleme Metni Teması", "type": "select", "options": ["Erdemler & Sevgi", "Millî Mücadele ve Atatürk", "Doğa ve Evren", "Okuma Sevgisi ve Kitaplar"] }
+          ],
+          "ai_prompt": "5. sınıf Türkçe dersi için öğretmenin sınıfta seslendireceği duygusal ve eğitici bir dinleme metni yaz. Ardından dinleme sırası ve sonrası için 5 adet açık uçlu anlama sorusu oluştur."
+        }
+      ]
+    },
+    {
+      "id": "sinif_6",
+      "name": "6. Sınıf Türkçe (mesuthayat.com)",
+      "icon": "bi-6-square-fill",
+      "color": "from-teal-600 to-emerald-700",
+      "tools": [
+        {
+          "id": "6_konu_anlatimlari",
+          "title": "6. Sınıf Konu Anlatımları & Ders Notları",
+          "description": "İsimler, İsim Tamlamaları, Sıfatlar, Zamirler, Edat-Bağlaç-Ünlem ve Metin Türleri.",
+          "badge": "6. Sınıf",
+          "content_summary": "• İsimler (Adlar): Varlıklara verilişine, maddelerine ve sayılarına göre isimler (Tekil, çoğul, topluluk).\n• İsim Tamlamaları: Belirtili, belirtisiz ve zincirleme isim tamlamaları.\n• Sıfatlar (Ön Adlar): Niteleme ve belirtme sıfatları (işaret, sayı, belgisiz, soru sıfatları).\n• Zamirler (Adıllar): Kişi, işaret, belgisiz, soru zamirleri ve ek halindeki zamirler (iyelik, ilgi zamiri).\n• Metin Türleri: Hikâye, fabl, masal, anı (hatıra), günlük ve mektup.\n• Edat, Bağlaç, Ünlem görevleri ve cümledeki anlamları.",
+          "fields": [
+            { "id": "konu", "label": "Konu", "type": "select", "options": ["İsimler ve İsim Tamlamaları (Belirtili/Belirtisiz/Zincirleme)", "Sıfatlar (Niteleme ve Belirtme Sıfatları)", "Zamirler (Kişi, İşaret, Belgisiz, Soru Zamirleri)", "Edat, Bağlaç ve Ünlemler", "Metin Türleri (Anı, Günlük, Fabl, Mektup)"] }
+          ],
+          "ai_prompt": "6. sınıf öğrencilerine yönelik seçilen dil bilgisi konusu için MEB müfredatına tam uyumlu konu özeti ve bol örnekli ders notu oluştur."
+        },
+        {
+          "id": "6_yazili_sinav",
+          "title": "6. Sınıf Açık Uçlu Yazılı Sınavı & Çözümleri",
+          "description": "6. sınıf müfredatı MEB ortak yazılı sınav formatında senaryolu açık uçlu sınav kağıdı.",
+          "badge": "Yazılı Sınav",
+          "fields": [
+            { "id": "donem_sinav", "label": "Dönem", "type": "select", "options": ["1. Dönem 1. Yazılı", "1. Dönem 2. Yazılı", "2. Dönem 1. Yazılı", "2. Dönem 2. Yazılı"] },
+            { "id": "soru_sayisi", "label": "Soru Sayısı", "type": "select", "options": ["7 Açık Uçlu Soru", "8 Açık Uçlu Soru"] }
+          ],
+          "ai_prompt": "6. sınıf Türkçe dersi için MEB senaryolarına uygun açık uçlu sınav hazırla. Metin anlama, tamlamalar, sıfatlar ve zamirleri kapsayan sorular ve cevap anahtarı ekle."
+        },
+        {
+          "id": "6_calisma_kagidi",
+          "title": "6. Sınıf Tamlama & Sıfat-Zamir Çalışma Kâğıdı",
+          "description": "Sıfat ve zamirleri ayırt etme, isim tamlaması bulma etkinlik kağıtları.",
+          "badge": "Etkinlik",
+          "fields": [
+            { "id": "odak", "label": "Çalışma Konusu", "type": "select", "options": ["İsim Tamlamaları Ayırt Etme Çalışması", "Sıfat mı Zamir mi? Karşılaştırma Tablosu", "Metin Türleri Eşleştirme Kartları"] }
+          ],
+          "ai_prompt": "6. sınıf öğrencileri için sıfatlar, zamirler ve isim tamlamalarını pekiştiren örnek cümleli çalışma yaprağı hazırla."
+        }
+      ]
+    },
+    {
+      "id": "sinif_7",
+      "name": "7. Sınıf Türkçe (mesuthayat.com)",
+      "icon": "bi-7-square-fill",
+      "color": "from-amber-600 to-orange-700",
+      "tools": [
+        {
+          "id": "7_konu_anlatimlari",
+          "title": "7. Sınıf Konu Anlatımları & Ders Notları",
+          "description": "Fiillerde Anlam (İş, Oluş, Durum), Kip ve Kişi Ekleri, Ek Fiil, Zarflar, Anlatım Bozuklukları.",
+          "badge": "7. Sınıf",
+          "content_summary": "• Fiillerde Anlam: İş (kılış), oluş ve durum fiilleri.\n• Fiil Çekimi: Haber (bildirme) kipleri (şimdiki zaman, geniş zaman, gelecek zaman, geçmiş zamanlar) ve Dilek (tasarlama) kipleri (gereklilik, şart, istek, emir).\n• Fiillerde Anlam (Zaman) Kayması.\n• Ek Fiil (Ek Eylem): İsimleri yüklem yapma görevi ve basit zamanlı fiilleri birleşik zamanlı yapma görevi (hikaye, rivayet, şart).\n• Zarflar (Belirteçler): Durum, zaman, miktar, yer-yön ve soru zarfları.\n• Anlatım Biçimleri ve Düşünceyi Geliştirme Yolları (Tanımlama, Karşılaştırma, Örneklendirme, Benzetme, Tanık Gösterme).",
+          "fields": [
+            { "id": "konu", "label": "Konu", "type": "select", "options": ["Fiiller (İş, Oluş, Durum) ve Kip-Kişi Ekleri", "Fiillerde Anlam (Zaman) Kayması", "Ek Fiil (İsimlerde ve Fiillerde Ek Fiil)", "Zarflar (Durum, Zaman, Miktar, Yer-Yön, Soru)", "Anlatım Biçimleri ve Düşünceyi Geliştirme Yolları"] }
+          ],
+          "ai_prompt": "7. sınıf Türkçe dersi için seçilen konuda kuralları, püf noktaları ve örnek çekim tablolarını içeren detaylı MEB uyumlu ders notu hazırla."
+        },
+        {
+          "id": "7_yazili_sinav",
+          "title": "7. Sınıf Açık Uçlu Yazılı Sınavı & Rubrik",
+          "description": "Fiil çekimleri, ek fiil ve zarfları kapsayan MEB senaryolu açık uçlu sınav kağıdı.",
+          "badge": "Yazılı Sınav",
+          "fields": [
+            { "id": "donem_sinav", "label": "Sınav Dönemi", "type": "select", "options": ["1. Dönem 1. Yazılı", "1. Dönem 2. Yazılı", "2. Dönem 1. Yazılı", "2. Dönem 2. Yazılı"] }
+          ],
+          "ai_prompt": "7. sınıf Türkçe dersi için MEB açık uçlu sınav formatında metin anlama, fiil kipleri, ek fiil ve zarf sorularını içeren puanlı yazılı sınav ve cevap anahtarı hazırla."
+        },
+        {
+          "id": "7_calisma_kagidi",
+          "title": "7. Sınıf Fiil Çekimleri & Ek Fiil Çalışma Kâğıdı",
+          "description": "Kip çekim tabloları, birleşik zamanlı fiiller ve zarf bulma alıştırmaları.",
+          "badge": "Etkinlik",
+          "fields": [
+            { "id": "konu", "label": "Alıştırma Türü", "type": "select", "options": ["Fiil Çekim Tablosu Doldurma (Kip ve Kişi)", "Ek Fiil Bulma ve Görevini Yazma", "Zarfları Cümlede Tespit Etme ve Türünü Belirtme"] }
+          ],
+          "ai_prompt": "7. sınıf öğrencileri için fiil çekimleri ve ek fiil konularında sınıf içi pekiştirme çalışma yaprağı hazırla."
+        }
+      ]
+    },
+    {
+      "id": "sinif_8",
+      "name": "8. Sınıf & LGS Türkçe (mesuthayat.com)",
+      "icon": "bi-award-fill",
+      "color": "from-rose-600 to-red-800",
+      "tools": [
+        {
+          "id": "8_konu_anlatimlari",
+          "title": "8. Sınıf & LGS Konu Anlatımları & Taktikler",
+          "description": "Fiilimsiler, Cümlenin Ögeleri, Cümle Türleri, Fiilde Çatı, Yazım-Noktalama, Metin Türleri.",
+          "badge": "LGS Özel",
+          "content_summary": "• Fiilimsiler (Eylemsiler): İsim-fiil (-ma,-ış,-mak), Sıfat-fiil (-an,-ası,-mez,-ar,-dik,-ecek,-miş), Zarf-fiil (-ken,-alı,-asiye,-ince,-ip,-erek...).\n• Cümlenin Ögeleri: Temel ögeler (Yüklem, Özne) ve Yardımcı ögeler (Nesne, Dolaylı Tümleç / Yer Tamlayıcısı, Zarf Tümleci). Vurgu ve ara söz.\n• Cümle Türleri: Yüklemin türüne, yerine, anlamına ve yapısına göre cümleler (Tek yüklemli, fiilimsili, birden çok yüklemli, bağlı cümleler).\n• Fiilde Çatı: Öznesine göre (Etken, Edilgen) ve Nesnesine göre (Geçişli, Geçişsiz).\n• Paragrafta Anlam & LGS Yeni Nesil: Sözel mantık, grafik/tablo okuma, metinler arası karşılaştırma.",
+          "fields": [
+            { "id": "konu", "label": "LGS Konusu", "type": "select", "options": ["Fiilimsiler (İsim-Fiil, Sıfat-Fiil, Zarf-Fiil)", "Cümlenin Ögeleri ve Cümle Dışı Unsurlar", "Cümle Türleri (Yapısına Göre Cümleler)", "Fiilde Çatı (Öznesine ve Nesnesine Göre)", "Yazım Kuralları ve Noktalama İşaretleri", "Metin Türleri ve Söz Sanatları", "Sözel Mantık ve Muhakeme Taktikleri"] }
+          ],
+          "ai_prompt": "8. sınıf LGS öğrencileri için seçilen konuda LGS sınavında çıkan püf noktaları, çeldiricileri ve pratik çözüm taktiklerini içeren üst düzey bir LGS ders notu hazırla."
+        },
+        {
+          "id": "8_lgs_deneme",
+          "title": "LGS Yeni Nesil Deneme Sınavı & Beceri Temelli Sorular",
+          "description": "Tamamı beceri temelli, grafik/tablo yorumlamalı, sözel mantık ve yeni nesil paragraf sorulu deneme.",
+          "badge": "LGS Deneme",
+          "fields": [
+            { "id": "deneme_turu", "label": "Deneme Kapsamı", "type": "select", "options": ["1. Dönem Konuları Sarmal Deneme", "Genel LGS Deneme Sınavı (Tüm Konular)", "Sadece Paragraf & Sözel Mantık Denemesi"] },
+            { "id": "soru_sayisi", "label": "Soru Sayısı", "type": "select", "options": ["5 Soruluk Mini Deneme", "10 Soruluk LGS Bölüm Denemesi"] }
+          ],
+          "ai_prompt": "MEB LGS örnek soruları ve çıkmış sorular formatında, üst düzey düşünme becerilerini ölçen, uzun metinli, grafikli veya sözel mantık kurgulu LGS Türkçe deneme sınavı ve her sorunun kapsamlı çözümünü hazırla."
+        },
+        {
+          "id": "8_yazili_sinav",
+          "title": "8. Sınıf MEB Ortak Açık Uçlu Yazılı Sınavı",
+          "description": "MEB ülke geneli ortak sınav standartlarında açık uçlu 8. sınıf sınavı.",
+          "badge": "MEB Ortak",
+          "fields": [
+            { "id": "donem", "label": "Dönem", "type": "select", "options": ["1. Dönem 1. Yazılı", "1. Dönem 2. Yazılı (MEB Ortak)", "2. Dönem 1. Yazılı", "2. Dönem 2. Yazılı"] }
+          ],
+          "ai_prompt": "8. sınıf Türkçe dersi için MEB ülke geneli ortak sınav formatında, kazanım dağılım tablosuna tam uygun açık uçlu yazılı sınavı ve cevap anahtarı hazırla."
+        },
+        {
+          "id": "8_calisma_kagidi",
+          "title": "8. Sınıf Fiilimsi & Öge Analiz Çalışma Kâğıdı",
+          "description": "Cümle ögelerini ayırma ve fiilimsi türlerini tespit etme pratik alıştırmaları.",
+          "badge": "LGS Etkinlik",
+          "fields": [
+            { "id": "konu", "label": "Konu", "type": "select", "options": ["Cümleleri Ögelerine Ayırma Tablosu", "Kalıplaşmış İsim ile Fiilimsiyi Ayırt Etme", "Fiilde Çatı ve Geçişlilik Bulmacası"] }
+          ],
+          "ai_prompt": "8. sınıf LGS öğrencileri için fiilimsiler veya cümlenin ögelerini pekiştiren örnek cümle çözümleme çalışma yaprağı hazırla."
+        }
+      ]
+    },
+    {
+      "id": "temel_kurul",
+      "name": "Temel Kurul ve Toplantı Tutanakları (turkcen.net)",
+      "icon": "bi-people-fill",
+      "color": "from-indigo-600 to-blue-800",
+      "tools": [
+        {
+          "id": "ogretmenler_kurulu",
+          "title": "Öğretmenler Kurulu Toplantı Tutanağı",
+          "description": "Sene başı, 2. dönem ve sene sonu MEB güncel mevzuatına tam uyumlu kurul tutanağı.",
+          "badge": "En Çok Kullanılan",
+          "fields": [
+            { "id": "donem", "label": "Toplantı Dönemi", "type": "select", "options": ["Sene Başı (1. Dönem Başı)", "2. Dönem Başı", "Sene Sonu (Ders Yılı Sonu)"] },
+            { "id": "toplanti_no", "label": "Toplantı No", "type": "text", "default": "1" },
+            { "id": "tarih_saat", "label": "Toplantı Tarihi ve Saati", "type": "text", "placeholder": "Örn: 09.09.2026 - 10:00" },
+            { "id": "yer", "label": "Toplantı Yeri", "type": "text", "default": "Öğretmenler Odası" },
+            { "id": "baskan", "label": "Kurul Başkanı (Okul Müdürü)", "type": "text", "placeholder": "Ad Soyad" },
+            { "id": "yazmanlar", "label": "Yazman Üyeler (2 Öğretmen)", "type": "text", "placeholder": "1. Yazman, 2. Yazman" },
+            { "id": "gundem_maddeleri", "label": "Gündem Maddeleri", "type": "textarea", "rows": 4, "default": "1. Açılış ve yoklama.\n2. Saygı duruşu ve İstiklal Marşı.\n3. MEB yeni müfredat programlarının (Türkiye Yüzyılı Maarif Modeli) incelenmesi.\n4. Türkçe dersi başarı hedefleri ve kitap okuma saatleri.\n5. Öğrenci devam-devamsızlık durumları.\n6. Dilek, temenniler ve kapanış." }
+          ],
+          "ai_prompt": "MEB mevzuatına uygun ayrıntılı Öğretmenler Kurulu Toplantı Tutanağı oluştur."
+        },
+        {
+          "id": "zumre_toplantisi",
+          "title": "Zümre Öğretmenler Kurulu Tutanağı (Türkçe)",
+          "description": "Türkçe zümresi için 4 temel beceri, sınav takvimi ve kitap okuma kararları.",
+          "badge": "Zümre",
+          "fields": [
+            { "id": "brans", "label": "Ders", "type": "text", "default": "Türkçe Dersi Zümresi" },
+            { "id": "donem", "label": "Dönem", "type": "select", "options": ["1. Dönem Başı Zümresi", "2. Dönem Başı Zümresi", "Sene Sonu Zümresi"] },
+            { "id": "gundem_maddeleri", "label": "Gündem Maddeleri", "type": "textarea", "rows": 4, "default": "1. Açılış ve yoklama.\n2. Maarif Modeli Türkçe Öğretim Programı'nın değerlendirilmesi.\n3. Dört temel dil becerisinin geliştirilmesine yönelik etkinlikler.\n4. Ortak sınavların planlanması ve BEP öğrencilerine yönelik tedbirler." }
+          ],
+          "ai_prompt": "MEB Türkçe Öğretim Programı kriterlerine uygun ayrıntılı Zümre Toplantı Tutanağı hazırla."
+        },
+        {
+          "id": "sok_toplantisi",
+          "title": "Şube Öğretmenler Kurulu (ŞÖK) Tutanağı",
+          "description": "Şube bazında akademik başarı ve riskli öğrencilerin değerlendirme belgesi.",
+          "badge": "ŞÖK",
+          "fields": [
+            { "id": "sube", "label": "Şube / Sınıf", "type": "text", "placeholder": "Örn: 7/A veya 8/B" },
+            { "id": "riskli_ogrenciler", "label": "Özel İlgi Gerektiren Öğrenciler", "type": "textarea", "rows": 3, "placeholder": "Öğrenci adı, Türkçe okuma güçlüğü veya ders ilgisizliği..." }
+          ],
+          "ai_prompt": "MEB Şube Öğretmenler Kurulu (ŞÖK) toplantı tutanağı hazırla."
+        },
+        {
+          "id": "veli_toplantisi",
+          "title": "Veli Toplantısı Tutanağı & İmzalı Katılım Listesi",
+          "description": "Sınıf veli toplantısı gündemi, kararları ve imza sirküsü sihirbazı.",
+          "badge": "Veli",
+          "fields": [
+            { "id": "sube", "label": "Sınıf / Şube", "type": "text", "placeholder": "Örn: 6-C" },
+            { "id": "toplanti_turu", "label": "Toplantı Dönemi", "type": "select", "options": ["1. Dönem Başı Veli Toplantısı", "2. Dönem Başı Veli Toplantısı", "LGS Bilgilendirme Toplantısı"] },
+            { "id": "gundem_maddeleri", "label": "Toplantı Gündemi", "type": "textarea", "rows": 3, "default": "1. Açılış ve tanışma.\n2. Kitap okuma alışkanlığının önemi.\n3. Cep telefonu ve ekran süresi takibi.\n4. Veli-okul iş birliği ve dilekler." }
+          ],
+          "ai_prompt": "Resmî Sınıf Veli Toplantısı Tutanağı ve veli imza çizelgesi hazırla."
+        }
+      ]
+    },
+    {
+      "id": "rehberlik_disiplin",
+      "name": "Rehberlik, BEP ve Olay Tutanakları",
+      "icon": "bi-shield-check",
+      "color": "from-purple-700 to-pink-700",
+      "tools": [
+        {
+          "id": "bep_tutanagi",
+          "title": "BEP Gelişim ve Değerlendirme Tutanağı",
+          "description": "Kaynaştırma öğrencileri için Türkçe dersi BEP toplantı ve değerlendirme formu.",
+          "badge": "BEP",
+          "fields": [
+            { "id": "ogrenci_ad", "label": "Öğrenci Adı Soyadı", "type": "text", "placeholder": "Örn: Mehmet Can (No: 342)" },
+            { "id": "sinif_sube", "label": "Sınıf / Şube", "type": "text", "placeholder": "6/B" },
+            { "id": "tanisi", "label": "Tanı Türü", "type": "text", "placeholder": "Özgül Öğrenme Güçlüğü (Disleksi)" },
+            { "id": "uyarlamalar", "label": "Sınav ve Ders Uyarlamaları", "type": "text", "placeholder": "Ek süre, büyük punto, okuma desteği" }
+          ],
+          "ai_prompt": "Özel Eğitim Hizmetleri Yönetmeliği'ne uygun BEP Gelişim ve Değerlendirme Tutanağı oluştur."
+        },
+        {
+          "id": "kopya_tutanagi",
+          "title": "Yazılı Sınav Kopya Tespit Tutanağı",
+          "description": "MEB Ölçme ve Değerlendirme Yönetmeliği gereğince sınav anı resmî tutanağı.",
+          "badge": "Resmî Sınav",
+          "fields": [
+            { "id": "ders_adi", "label": "Ders Adı", "type": "text", "default": "Türkçe Dersi Yazılı Sınavı" },
+            { "id": "ogrenci_bilgi", "label": "Öğrenci Bilgileri", "type": "text", "placeholder": "Öğrenci Ad Soyad - No - Sınıf" },
+            { "id": "kopya_yontemi", "label": "Kopya Çekme Şekli / Delil", "type": "textarea", "rows": 2, "placeholder": "Sıranın altına gizlenen not kağıdı..." }
+          ],
+          "ai_prompt": "MEB Ölçme ve Değerlendirme Yönetmeliği'ne uygun Sınav Kopya Tespit Tutanağı hazırla."
+        },
+        {
+          "id": "rehberlik_gorusme",
+          "title": "Öğretmen - Veli Bireysel Görüşme Tutanağı",
+          "description": "Veliyle yapılan birebir görüşmelerin kayıt altına alındığı resmî form.",
+          "badge": "Veli Formu",
+          "fields": [
+            { "id": "ogrenci_bilgi", "label": "Öğrenci Bilgisi", "type": "text", "placeholder": "Örn: Ayşe Kaya - 7/A" },
+            { "id": "gorusulen_konular", "label": "Görüşülen Konular", "type": "textarea", "rows": 2, "placeholder": "Türkçe dersindeki ödev aksaklığı, ders içi motivasyon..." }
+          ],
+          "ai_prompt": "Resmî Öğretmen-Veli Bireysel Görüşme Tutanağı oluştur."
+        }
+      ]
+    }
+  ]
+}
